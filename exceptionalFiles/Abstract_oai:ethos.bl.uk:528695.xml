@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+
+<responseDate>2015-12-27T00:10:29Z</responseDate>
+<request verb="GetRecord" metadataPrefix="uketd_dc" identifier="oai:ethos.bl.uk:528695">http://simba.cs.uct.ac.za/~ethos/cgi-bin/OAI-XMLFile-2.21/XMLFile/ethos/oai.pl</request>
+
+<GetRecord>
+<record>
+<header>
+<identifier>oai:ethos.bl.uk:528695</identifier>
+<datestamp>2015-03-19T01:13:14Z</datestamp>
+<setSpec>Full text ETDs:Aberystwyth_University</setSpec>
+<setSpec>All theses:Aberystwyth_University</setSpec>
+</header>
+<metadata>
+<uketd_dc:uketddc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://naca.central.cranfield.ac.uk/ethos-oai/2.0/ http://naca.central.cranfield.ac.uk/ethos-oai/2.0/uketd_dc.xsd" xmlns:uketd_dc="http://naca.central.cranfield.ac.uk/ethos-oai/2.0/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:uketdterms="http://naca.central.cranfield.ac.uk/ethos-oai/terms/">
+<dc:title>An investigation of the status of 'Shakespeare', and the ways in which this is manifested in audience responses, with specific reference to three late-1990s Shakespearean films</dc:title>
+<dc:creator>Martindale, Sarah</dc:creator>
+<uketdterms:advisor>Barker, Martin</uketdterms:advisor>
+<uketdterms:institution>Aberystwyth University</uketdterms:institution>
+<dc:publisher>Aberystwyth University</dc:publisher>
+<dcterms:issued>2011</dcterms:issued>
+<dcterms:abstract>The status of ‘Shakespeare’ is an incredibly intricate cultural construct, which is influenced by circumstantially contingent hierarchies of value, academic discourses, institutional processes, educational curricula, and media techniques. Having explored the context in which Shakespeare currently stands as an icon through the review of existing scholarship, this thesis employs a combined methodology to facilitate an investigation of some of the ways in which the playwright and his works are significant in contemporary culture, by specifically examining three late-1990s Shakespearean films and some particular types of audience responses. The case studies – Romeo + Juliet, Shakespeare in Love and 10 Things I Hate About You – are each analysed, according to their individual content and context, as cinematic products, which are understood in relation to Shakespeare and also many other cultural frameworks. It is acknowledged that Shakespeare has a particularly potent and established iconicity within academia and the education system, and it is argued that this position informs, but is also modified and challenged by, the filmic conceptualisations. These observations are enriched and developed by the findings of empirical audience research. Questionnaires were used to elicit a mixture of quantitative and qualitative information from secondary school teachers of Shakespeare, and from first year English and/or media undergraduates, about their experiences and opinions of Shakespeare in contemporary culture, especially Shakespearean films. Patterns identifiable in the data generated confirm that cinematic interpretations can transform the cultural currency of Shakespeare, reducing the distance between young people and the text by using familiar modes of address, but also point to tensions stemming from a disjunction of conventional evaluative criteria and the diverse ways in which Shakespeare now functions in mass culture. This work therefore contributes to debates about Shakespeare’s cultural status by examining the complex processes of negotiation of meaning that are discernable in these instances.</dcterms:abstract>
+<uketdterms:sponsor>AHRC</uketdterms:sponsor>
+<dc:type>Thesis or dissertation</dc:type>
+<uketdterms:qualificationname>Thesis (Ph.D.)</uketdterms:qualificationname>
+<uketdterms:qualificationlevel>Doctoral</uketdterms:qualificationlevel>
+<dcterms:accessRights>Full text available</dcterms:accessRights>
+<dc:identifier>http://ethos.bl.uk/OrderDetails.do?uin=uk.bl.ethos.528695</dc:identifier>
+<dc:source>http://hdl.handle.net/2160/6126</dc:source>
+<dc:subject>Performance criticism : Cultural materialism : Cultural impact</dc:subject>
+</uketd_dc:uketddc>
+</metadata>
+</record>
+</GetRecord>
+
+</OAI-PMH>
