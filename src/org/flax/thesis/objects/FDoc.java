@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import org.flax.thesis.main.Consts;
@@ -15,24 +16,26 @@ public class FDoc {
 
 	final static org.apache.log4j.Logger logger = Logger.getLogger(org.flax.thesis.objects.FDoc.class.getName());
 
-	public String responseDate;
-	public String request;
-	public String identifier;
-	public String datestamp;
+	public String responseDate ="";
+	public String request ="";
+	public String identifier = "";
+	public String datestamp = "";
+	public Timestamp timestamp;
 	public ArrayList<String> setSpecs = new ArrayList<String>();
-	public String title;
-	public String creator;
-	public String institution;
-	public String publisher;
-	public String issued;
-	public String content;
-	public String dctype;
-	public String qualificationName;
-	public String qualificationLevel;
-	public String accessRights;
-	public String dcIdentifier;
-	public String dcSource;
-	public String dcSubject;
+	public String title = "";
+	public String creator = "";
+	public String institution = "";
+	public String publisher = "";
+	public String issued = "";
+	public String content = "";
+	public String dctype = "";
+	public String qualificationName = "";
+	public String qualificationLevel = "";
+	public String accessRights = "";
+	public String dcIdentifier = "";
+	public String dcSource = "";
+	public double dcSubject = 0;
+	public String originalSubject = "";
 
 	/*
 	 * (non-Javadoc)

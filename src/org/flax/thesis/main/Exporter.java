@@ -71,7 +71,7 @@ public class Exporter {
 	
 	public String getDDCPath(String SavePath, FDoc fdoc){
 		String targetPath = "";
-		String DDC = fdoc.dcSubject.trim();
+		String DDC = Double.toString(fdoc.dcSubject);
 		
 		if(fdoc.content.isEmpty() || DDC.isEmpty() || DDC.length() <= 2 || !Character.isDigit(DDC.charAt(0)) || !Character.isDigit(DDC.charAt(1)) ){
 			logger.warn("DDC: "+ DDC + "is exceptional. Ignored.");

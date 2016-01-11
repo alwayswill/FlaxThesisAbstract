@@ -3,6 +3,7 @@ package org.flax.thesis.main;
 public final class Consts {
 	public static final String APPROOTPATH = System.getProperty("user.dir");
 	public static final String CACHEPATH = Consts.APPROOTPATH+"/cache";
+	public static final String DBPATH = Consts.APPROOTPATH+"/db";
 	public static final String EXPORTSPATH = Consts.APPROOTPATH+"/exports";
 	public static final String TEMPLATESPATH = Consts.APPROOTPATH+"/templates";
 	public static final String IDENTIFIERPATH = Consts.APPROOTPATH+"/cache"+"/identifiers";
@@ -10,6 +11,7 @@ public final class Consts {
 	public static final String UNIFOLDERPREFIX = "Uni_";
 	public static final String INDENTIFIERLISTFILENAME = "IndentifierList.xml";
 	public static final String UNILISTFILE = "UniList.xml";
+	
 	
 	public static final String UNILISTLINK = "http://simba.cs.uct.ac.za/~ethos/cgi-bin/OAI-XMLFile-2.21/XMLFile/ethos/oai.pl?verb=ListSets";
 	
