@@ -14,8 +14,8 @@ public class TestDB {
 		Database db = new Database();
 //		db.DeleteTable();
 //		db.CreateTable();
-		db.getCategories();
+//		db.getCategories();
+		db.getNumberOfAbsByUnis();
 		db.close();
 	}
-
 }

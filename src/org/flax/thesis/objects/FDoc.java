@@ -5,10 +5,16 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.flax.thesis.main.Consts;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.log4j.Logger;
 
@@ -36,7 +42,40 @@ public class FDoc {
 	public String dcSource = "";
 	public double dcSubject = 0;
 	public String originalSubject = "";
-
+	public static String EXPORTTYPEHTML = "html";
+	public static String EXPORTTYPEJSON = "json";
+	
+	public FDoc(){
+		
+	}
+	public FDoc(ResultSet resultset){
+		try {
+			this.responseDate = resultset.getString("responseDate");
+			this.request = resultset.getString("request");
+			this.identifier = resultset.getString("identifier");
+			this.datestamp = resultset.getString("datestamp");
+			this.timestamp = resultset.getTimestamp("timestamp");
+			this.setSpecs =  new ArrayList<String>( Arrays.asList(resultset.getString("setSpecs").split(",")));
+			this.title = resultset.getString("title");
+			this.creator = resultset.getString("creator");
+			this.institution = resultset.getString("institution");
+			this.publisher = resultset.getString("publisher");
+			this.issued = resultset.getString("issued");
+			this.content = resultset.getString("content");
+			this.dctype = resultset.getString("dctype");
+			this.qualificationName = resultset.getString("qualificationName");
+			this.qualificationLevel = resultset.getString("qualificationLevel");
+			this.accessRights = resultset.getString("accessRights");
+			this.dcIdentifier = resultset.getString("dcIdentifier");
+			this.dcSource = resultset.getString("dcSource");
+			this.dcSubject = resultset.getDouble("dcSubject");
+			this.originalSubject = resultset.getString("originalSubject");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -70,6 +109,18 @@ public class FDoc {
 		}
 		
 		return templateText;
+	}
+	
+	public String toJson(){
+		String jsonString = "";
+		ObjectMapper mapper = new ObjectMapper();
+		//Object to JSON in String
+		try {
+			jsonString = mapper.writeValueAsString(this);
+		} catch (JsonProcessingException e) {
+			logger.error(e);
+		}
+		return jsonString;
 	}
 
 }

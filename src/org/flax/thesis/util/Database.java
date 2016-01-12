@@ -14,6 +14,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.flax.thesis.main.Consts;
+import org.flax.thesis.main.Exporter;
 import org.flax.thesis.objects.FDoc;
 
 public class Database {
@@ -51,6 +52,26 @@ public class Database {
 		}
 	}
 	
+	public void GetAbstracts(String type){
+		PreparedStatement selectPreparedStatement = null;
+		String sql = "SELECT * from ABSTRACT";
+		try {
+			connection.setAutoCommit(false);
+		       selectPreparedStatement = connection.prepareStatement(sql);
+	            ResultSet rs = selectPreparedStatement.executeQuery();
+	            while (rs.next()) {
+	            	FDoc fdoc = new FDoc(rs);
+	            	Exporter.Export(fdoc, type);
+	            }
+	            selectPreparedStatement.close();
+	            connection.commit();
+		} catch (SQLException e) {
+			logger.error(e);
+		} catch (Exception e) {
+			logger.error(e);
+		}
+	}
+	
 	
 	public void getCategories() throws SQLException {
 		PreparedStatement selectPreparedStatement = null;
@@ -62,7 +83,7 @@ public class Database {
 	            while (rs.next()) {
 	            	String message = "Category: "+rs.getString("ORIGINALSUBJECT") +" Count: "+rs.getInt("theCount")+ "\r\n";
 	    			
-	    			File toSaveFile = new File(Consts.APPROOTPATH+"/category.repo");
+	    			File toSaveFile = new File(Consts.APPROOTPATH+"/statics/category.repo");
 	    			try {
 	    				FileUtils.writeStringToFile(toSaveFile, message, true);
 	    			} catch (IOException e) {
@@ -79,6 +100,36 @@ public class Database {
 			connection.close();
 		}
 	}
+	
+	
+	public void getNumberOfAbsByUnis() throws SQLException {
+		PreparedStatement selectPreparedStatement = null;
+		String sql = "SELECT COUNT(id) AS theCount, INSTITUTION from ABSTRACT GROUP BY INSTITUTION ORDER BY theCount DESC";
+		try {
+			connection.setAutoCommit(false);
+		       selectPreparedStatement = connection.prepareStatement(sql);
+	            ResultSet rs = selectPreparedStatement.executeQuery();
+	            while (rs.next()) {
+	            	String message = "Uni: "+rs.getString("INSTITUTION") +" | Count: "+rs.getInt("theCount")+ "\r\n";
+	    			
+	    			File toSaveFile = new File(Consts.APPROOTPATH+"/statics/NumberOfAbsByUnis.repo");
+	    			try {
+	    				FileUtils.writeStringToFile(toSaveFile, message, true);
+	    			} catch (IOException e) {
+	    				logger.error(e);
+	    			}
+	            }
+	            selectPreparedStatement.close();
+	            connection.commit();
+		} catch (SQLException e) {
+			logger.error(e);
+		} catch (Exception e) {
+			logger.error(e);
+		} finally {
+			connection.close();
+		}
+	}
+	
 	
 	public void insertAbstract(FDoc fdoc)  throws SQLException{
 
