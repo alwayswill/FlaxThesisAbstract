@@ -10,12 +10,14 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Matcher;
 
 import org.flax.thesis.main.Consts;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.log4j.Logger;
 
 public class FDoc {
@@ -102,10 +104,15 @@ public class FDoc {
 			
 //			TODO:setSpec
 			for (Field field : fields) {
-				templateText = templateText.replaceAll("\\{\\$" + field.getName() + "\\}", field.get(this).toString());
+				String replaceStr = StringEscapeUtils.escapeHtml(field.get(this).toString());
+				templateText = templateText.replaceAll("\\{\\$" + field.getName() + "\\}", Matcher.quoteReplacement(replaceStr));
 			}
-		} catch (Exception e) {
-			logger.error(e);
+		}  catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		return templateText;
