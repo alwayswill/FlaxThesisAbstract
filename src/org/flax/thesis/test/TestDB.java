@@ -12,10 +12,10 @@ public class TestDB {
 	@Test
 	public void test() throws SQLException {
 		Database db = new Database();
-//		db.DeleteTable();
-//		db.CreateTable();
+		db.DeleteTables();
+		db.CreateTable();
 //		db.getCategories();
-		db.getNumberOfAbsByUnis();
+//		db.getNumberOfAbsByUnis();
 		db.close();
 	}
 }

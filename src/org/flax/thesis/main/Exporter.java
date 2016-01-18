@@ -19,7 +19,7 @@ public class Exporter {
 
 	public void run() {
 		this.ExportALLToHTML();
-//		this.ExportALLToJSON();
+		this.ExportALLToJSON();
 		// this.findAbstracts(Consts.CACHEPATH);
 		// logger.info("ignored files/ total files: " + ignoredCounter + "/" +
 		// (exportCounter + ignoredCounter)

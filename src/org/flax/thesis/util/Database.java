@@ -25,8 +25,25 @@ public class Database {
 	private static final String DB_PASSWORD = "";
 	public Connection connection;
 
-	public static void DeleteTable(){
+	public static void DeleteDBFiles(){
 		 DeleteDbFiles.execute(Consts.DBPATH, "AbstractDB", true);
+	}
+	
+	public void DeleteTables(){
+		this.connection = getDBConnection();
+		Statement stmt = null;
+		String sql = "DROP TABLE Abstract";
+		try {
+			connection.setAutoCommit(false);
+			stmt = connection.createStatement();
+			stmt.execute(sql);
+			stmt.close();
+			connection.commit();
+		} catch (SQLException e) {
+			logger.error(e);
+		} catch (Exception e) {
+			logger.error(e);
+		}
 	}
 	
 	public Database(){
@@ -36,7 +53,7 @@ public class Database {
 	public void CreateTable() throws SQLException {
 		this.connection = getDBConnection();
 		Statement stmt = null;
-		String sql = "CREATE TABLE Abstract(id bigint auto_increment primary key, responseDate varchar(30), request text, identifier varchar(255), datestamp varchar(30), timestamp timestamp,  title text, creator varchar(100), institution varchar(255), publisher varchar(255), issued varchar(30), content text, dctype varchar(255), qualificationName varchar(255), qualificationLevel varchar(255), accessRights varchar(255), dcIdentifier text, dcSource text, dcSubject double, setSpecs text, originalSubject text)";
+		String sql = "CREATE TABLE Abstract(id bigint auto_increment primary key, responseDate varchar(30), request text, identifier varchar(255), datestamp varchar(30), timestamp timestamp,  title text, creator varchar(100), institution varchar(255), publisher varchar(255), issued varchar(30), content text, dctype varchar(255), qualificationName varchar(255), qualificationLevel varchar(255), accessRights varchar(255), dcIdentifier text, dcSource text, dcSubject double, setSpecs text, originalSubject text, discipline varchar(255), DDCDescprition varchar(255))";
 		try {
 			connection.setAutoCommit(false);
 			stmt = connection.createStatement();
@@ -136,7 +153,7 @@ public class Database {
            this.connection.setAutoCommit(false);
            
 	        PreparedStatement insertPreparedStatement = null;
-	        String InsertQuery = "INSERT INTO ABSTRACT" + "(responseDate, request, identifier, datestamp, timestamp, title, creator, institution, publisher, issued, content, dctype, qualificationName ,qualificationLevel, accessRights, dcIdentifier, dcSource, dcSubject, setSpecs, originalSubject) values" + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	        String InsertQuery = "INSERT INTO ABSTRACT" + "(responseDate, request, identifier, datestamp, timestamp, title, creator, institution, publisher, issued, content, dctype, qualificationName ,qualificationLevel, accessRights, dcIdentifier, dcSource, dcSubject, setSpecs, originalSubject, discipline, DDCDescprition) values" + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	        try {
 	            insertPreparedStatement = connection.prepareStatement(InsertQuery);
 	            insertPreparedStatement.setString(1, fdoc.responseDate);
@@ -160,6 +177,8 @@ public class Database {
 	            
 	            insertPreparedStatement.setString(19,  StringUtils.join(fdoc.setSpecs, ","));
 	            insertPreparedStatement.setString(20,  fdoc.originalSubject);
+	            insertPreparedStatement.setString(21,  fdoc.discipline);
+	            insertPreparedStatement.setString(22,  fdoc.DDCDescprition);
 	            
 	            insertPreparedStatement.executeUpdate();
 	            insertPreparedStatement.close();

@@ -18,6 +18,8 @@
 <meta name="dc_identifier" content="{$dcIdentifier}">
 <meta name="dc_source" content="{$dcSource}">
 <meta name="DDC" content="{$dcSubject}">
+<meta name="DDCDescprition" content="{$DDCDescprition}">
+<meta name="Discipline" content="{$discipline}">
 
 </head>
 <body>

@@ -1,0 +1,95 @@
+00,Physical Science
+50,Physical Science
+51,Physical Science
+52,Physical Science
+53,Physical Science
+54,Physical Science
+55,Physical Science
+62,Physical Science
+66,Physical Science
+67,Physical Science
+68,Physical Science
+69,Physical Science
+71,Physical Science
+72,Physical Science
+05,Arts and Humanities
+06,Arts and Humanities
+07,Arts and Humanities
+10,Arts and Humanities
+11,Arts and Humanities
+12,Arts and Humanities
+13,Arts and Humanities
+14,Arts and Humanities
+15,Arts and Humanities
+16,Arts and Humanities
+17,Arts and Humanities
+18,Arts and Humanities
+19,Arts and Humanities
+20,Arts and Humanities
+21,Arts and Humanities
+22,Arts and Humanities
+23,Arts and Humanities
+24,Arts and Humanities
+25,Arts and Humanities
+26,Arts and Humanities
+27,Arts and Humanities
+28,Arts and Humanities
+29,Arts and Humanities
+40,Arts and Humanities
+41,Arts and Humanities
+42,Arts and Humanities
+43,Arts and Humanities
+44,Arts and Humanities
+45,Arts and Humanities
+46,Arts and Humanities
+47,Arts and Humanities
+48,Arts and Humanities
+49,Arts and Humanities
+70,Arts and Humanities
+73,Arts and Humanities
+74,Arts and Humanities
+75,Arts and Humanities
+76,Arts and Humanities
+77,Arts and Humanities
+78,Arts and Humanities
+79,Arts and Humanities
+80,Arts and Humanities
+81,Arts and Humanities
+82,Arts and Humanities
+83,Arts and Humanities
+84,Arts and Humanities
+85,Arts and Humanities
+86,Arts and Humanities
+87,Arts and Humanities
+88,Arts and Humanities
+89,Arts and Humanities
+90,Arts and Humanities
+91,Arts and Humanities
+92,Arts and Humanities
+93,Arts and Humanities
+94,Arts and Humanities
+95,Arts and Humanities
+96,Arts and Humanities
+97,Arts and Humanities
+98,Arts and Humanities
+99,Arts and Humanities
+02,Social Science
+30,Social Science
+31,Social Science
+32,Social Science
+33,Social Science
+34,Social Science
+35,Social Science
+36,Social Science
+37,Social Science
+38,Social Science
+39,Social Science
+60,Social Science
+64,Social Science
+65,Social Science
+56,Life Science
+57,Life Science
+58,Life Science
+59,Life Science
+61,Life Science
+63,Life Science

@@ -13,9 +13,10 @@ public class Main {
 		
 //		Harvester harvester = new Harvester();
 //		harvester.run();
-		Exporter exporter = new Exporter();
-		exporter.run();
 //		Importer importer = new Importer();
 //		importer.run();
+		Exporter exporter = new Exporter();
+		exporter.run();
+
 	}
 }

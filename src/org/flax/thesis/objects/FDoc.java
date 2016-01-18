@@ -24,8 +24,8 @@ public class FDoc {
 
 	final static org.apache.log4j.Logger logger = Logger.getLogger(org.flax.thesis.objects.FDoc.class.getName());
 
-	public String responseDate ="";
-	public String request ="";
+	public String responseDate = "";
+	public String request = "";
 	public String identifier = "";
 	public String datestamp = "";
 	public Timestamp timestamp;
@@ -46,18 +46,21 @@ public class FDoc {
 	public String originalSubject = "";
 	public static String EXPORTTYPEHTML = "html";
 	public static String EXPORTTYPEJSON = "json";
-	
-	public FDoc(){
-		
+	public String discipline = "";
+	public String DDCDescprition = "";
+
+	public FDoc() {
+
 	}
-	public FDoc(ResultSet resultset){
+
+	public FDoc(ResultSet resultset) {
 		try {
 			this.responseDate = resultset.getString("responseDate");
 			this.request = resultset.getString("request");
 			this.identifier = resultset.getString("identifier");
 			this.datestamp = resultset.getString("datestamp");
 			this.timestamp = resultset.getTimestamp("timestamp");
-			this.setSpecs =  new ArrayList<String>( Arrays.asList(resultset.getString("setSpecs").split(",")));
+			this.setSpecs = new ArrayList<String>(Arrays.asList(resultset.getString("setSpecs").split(",")));
 			this.title = resultset.getString("title");
 			this.creator = resultset.getString("creator");
 			this.institution = resultset.getString("institution");
@@ -72,12 +75,15 @@ public class FDoc {
 			this.dcSource = resultset.getString("dcSource");
 			this.dcSubject = resultset.getDouble("dcSubject");
 			this.originalSubject = resultset.getString("originalSubject");
-			
+			this.DDCDescprition = resultset.getString("DDCDescprition");
+			this.discipline = resultset.getString("discipline");
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -86,11 +92,13 @@ public class FDoc {
 	@Override
 	public String toString() {
 		return "FDoc [responseDate=" + responseDate + ", request=" + request + ", identifier=" + identifier
-				+ ", datestamp=" + datestamp + ", setSpecs=" + setSpecs + ", title=" + title + ", creator=" + creator
-				+ ", institution=" + institution + ", publisher=" + publisher + ", issued=" + issued + ", content="
-				+ content + ", qualificationName=" + qualificationName + ", qualificationLevel=" + qualificationLevel
-				+ ", accessRights=" + accessRights + ", dcIdentifier=" + dcIdentifier + ", dcSource=" + dcSource
-				+ ", dcSubject=" + dcSubject + "]";
+				+ ", datestamp=" + datestamp + ", timestamp=" + timestamp + ", setSpecs=" + setSpecs + ", title="
+				+ title + ", creator=" + creator + ", institution=" + institution + ", publisher=" + publisher
+				+ ", issued=" + issued + ", content=" + content + ", dctype=" + dctype + ", qualificationName="
+				+ qualificationName + ", qualificationLevel=" + qualificationLevel + ", accessRights=" + accessRights
+				+ ", dcIdentifier=" + dcIdentifier + ", dcSource=" + dcSource + ", dcSubject=" + dcSubject
+				+ ", originalSubject=" + originalSubject + ", discipline=" + discipline + ", DDCDescprition="
+				+ DDCDescprition + "]";
 	}
 
 	public String toHTML(String template) {
@@ -101,27 +109,43 @@ public class FDoc {
 
 			Class<?> c = this.getClass();
 			Field[] fields = c.getDeclaredFields();
-			
-//			TODO:setSpec
+
+			// TODO:setSpec
 			for (Field field : fields) {
 				String replaceStr = StringEscapeUtils.escapeHtml(field.get(this).toString());
-				templateText = templateText.replaceAll("\\{\\$" + field.getName() + "\\}", Matcher.quoteReplacement(replaceStr));
+				templateText = templateText.replaceAll("\\{\\$" + field.getName() + "\\}",
+						Matcher.quoteReplacement(replaceStr));
 			}
-		}  catch (IllegalAccessException e) {
+		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return templateText;
 	}
-	
-	public String toJson(){
+
+	public String getDcSubject() {
+		if (this.originalSubject.isEmpty()) {
+			return "";
+		}
+
+		String dcSubjectValue = this.originalSubject;
+		if (dcSubjectValue.isEmpty() || dcSubjectValue.length() <= 2 || !Character.isDigit(dcSubjectValue.charAt(0))
+				|| !Character.isDigit(dcSubjectValue.charAt(1))) {
+			return "";
+		}
+
+		return dcSubjectValue.substring(0, 2);
+
+	}
+
+	public String toJson() {
 		String jsonString = "";
 		ObjectMapper mapper = new ObjectMapper();
-		//Object to JSON in String
+		// Object to JSON in String
 		try {
 			jsonString = mapper.writeValueAsString(this);
 		} catch (JsonProcessingException e) {

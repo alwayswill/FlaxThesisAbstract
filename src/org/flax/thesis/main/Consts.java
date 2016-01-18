@@ -11,6 +11,9 @@ public final class Consts {
 	public static final String UNIFOLDERPREFIX = "Uni_";
 	public static final String INDENTIFIERLISTFILENAME = "IndentifierList.xml";
 	public static final String UNILISTFILE = "UniList.xml";
+	public static final String FILE_NAME_DDC_CATEGORY = "ddc_category.txt";
+	public static final String FILE_NAME_DEWEYDECIMALTODISCIPLINE = "deweyDecimalToDiscipline.txt";
+	
 	
 	
 	public static final String UNILISTLINK = "http://simba.cs.uct.ac.za/~ethos/cgi-bin/OAI-XMLFile-2.21/XMLFile/ethos/oai.pl?verb=ListSets";
